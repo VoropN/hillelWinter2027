@@ -33,7 +33,7 @@ public class Program {
         for (Participant participant : participants) {
             for (Obstacle obstacle : obstacles) {
                 // 8. Якщо учасник не зміг пройти одну з перешкод, то наступного він не приступає (цілком вибуває з участі в серії перешкод).
-                if (!participant.overcome(obstacle)) {
+                if (!obstacle.overcome(participant)) {
                     participant.printTourFailure();
                     break;
                 }
