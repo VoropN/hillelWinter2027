@@ -1,4 +1,4 @@
-FILE: hw/hw_12/logs/debug_log
+FILE: hw/hw_12/file_logger/logs/debug_log
 
 LEVEL: DEBUG
 

@@ -1,12 +1,15 @@
-package hw_12;
+package hw_12.file_logger;
+
+import hw_12.LoggerConfigurationLoader;
+import hw_12.LoggingLevel;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 // 5. * Створити клас FileLoggerConfigurationLoader. Об'єкт даного типу за допомогою методу load, завантажуватиме конфігурацію для логування із зазначеного файлу. Метод повертає об'єкт типу FileLoggerConfiguration.
-public class FileLoggerConfigurationLoader {
-    private String configPath;
+public class FileLoggerConfigurationLoader implements LoggerConfigurationLoader {
+    private final String configPath;
 
     public FileLoggerConfigurationLoader(String configPath) {
         this.configPath = configPath;

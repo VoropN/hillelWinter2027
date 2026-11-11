@@ -1,4 +1,4 @@
-package hw_12;
+package hw_12.file_logger;
 
 public enum ConfigKeys {
     FILE,

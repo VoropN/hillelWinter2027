@@ -1,4 +1,4 @@
-package hw_12;
+package hw_12.file_logger;
 
 import java.io.File;
 
@@ -6,15 +6,15 @@ import java.io.File;
 public class FileMaxSizeReachedException extends RuntimeException {
     public FileMaxSizeReachedException(File file, long maxSize, long currentSize, long attemptedSize) {
         super("""
-            File max size reached: max allowed size is [%d] bytes; \
-            current size is [%d] bytes and writing this message would make it [%d] bytes. \
-            File: [%s].
-            """.formatted(
-                maxSize,
-                currentSize,
-                attemptedSize,
-                file.getAbsolutePath()
-            )
+                        File max size reached: max allowed size is [%d] bytes; \
+                        current size is [%d] bytes and writing this message would make it [%d] bytes. \
+                        File: [%s].
+                        """.formatted(
+                        maxSize,
+                        currentSize,
+                        attemptedSize,
+                        file.getAbsolutePath()
+                )
         );
     }
 }

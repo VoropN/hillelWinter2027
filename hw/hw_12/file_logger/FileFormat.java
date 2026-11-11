@@ -1,6 +1,8 @@
-package hw_12;
+package hw_12.file_logger;
 
-public enum FileFormat {
+import hw_12.LogFormat;
+
+public enum FileFormat implements LogFormat {
     TXT("txt"),
     JSON("json");
 
@@ -12,5 +14,10 @@ public enum FileFormat {
 
     public String getExtension() {
         return "." + format;
+    }
+
+    @Override
+    public String getFormat() {
+        return format;
     }
 }

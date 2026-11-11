@@ -1,4 +1,7 @@
-package hw_12;
+package hw_12.file_logger;
+
+import hw_12.Logger;
+import hw_12.LoggingLevel;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 
 // 1. Створити клас FileLogger. Клас здійснюватиме логування (протоколування) інформації в зазначений файл на підставі конфігураційного об'єкта.
-public class FileLogger {
+public class FileLogger implements Logger {
     private final FileLoggerConfiguration config;
 
     public FileLogger(FileLoggerConfiguration config) {
@@ -34,7 +37,7 @@ public class FileLogger {
 
         String message = getFormattedMessage(messageLine, logLevel);
         byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8);
-        File file = config.getFile();
+        File file = config.getOutput();
         long maxSize = config.getMaxSize();
         long currentSize = file.exists() ? Files.size(file.toPath()) : 0;
 
@@ -48,7 +51,7 @@ public class FileLogger {
 
             String previousPath = file.getAbsolutePath();
             config.createLogFile();
-            file = config.getFile();
+            file = config.getOutput();
             System.err.printf("""
                     Log file rotated
                       - from %s
