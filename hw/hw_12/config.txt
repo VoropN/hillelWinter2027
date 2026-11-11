@@ -1,0 +1,7 @@
+FILE: hw/hw_12/logs/debug_log
+
+LEVEL: DEBUG
+
+MAX-SIZE: 50kb
+
+FORMAT: JSON
