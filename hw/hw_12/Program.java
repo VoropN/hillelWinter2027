@@ -4,6 +4,7 @@ import hw_12.file_logger.*;
 import hw_12.stdout_logger.StdoutFormat;
 import hw_12.stdout_logger.StdoutLogger;
 import hw_12.stdout_logger.StdoutLoggerConfiguration;
+import hw_12.stdout_logger.StdoutLoggerConfigurationLoader;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +23,11 @@ public class Program {
     }
 
     static void runStoutDebugMode() throws IOException {
-        StdoutLoggerConfiguration config = new StdoutLoggerConfiguration(LoggingLevel.DEBUG, 1100, StdoutFormat.YELLOW);
-        Logger logger = new StdoutLogger(config);
+        String configPath = String.join(File.separator, "hw", "hw_12", "stdout_logger", "config.txt");
+        StdoutLoggerConfigurationLoader loader = new StdoutLoggerConfigurationLoader(configPath);
+        Logger logger = new StdoutLogger(loader.load());
         logger.debug("some debug message");
+        logger.debug("some debug message: but long" + "-longgg".repeat(100));
     }
 
     static void runInfoMode() throws IOException {

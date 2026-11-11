@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 // 3. Створити клас FileLoggerConfiguration. Клас представляє конфігурацію для логування. Складається з властивостей: файл, куди буде записуватися інформація, поточний рівень логування, максимальний розмір файлу (в байтах), формат для запису в файл.
-public class FileLoggerConfiguration implements LoggerConfiguration {
+public class FileLoggerConfiguration implements LoggerConfiguration<Long> {
     private final File file;
     private final DateTimeFormatter suffixFormat = DateTimeFormatter.ofPattern("_dd.MM.yyyy-HH:mm:ss");
     private final LoggingLevel logLevel;
@@ -38,7 +38,7 @@ public class FileLoggerConfiguration implements LoggerConfiguration {
         return logLevel;
     }
 
-    public long getMaxSize() {
+    public Long getMaxSize() {
         return maxSize;
     }
 

@@ -1,9 +1,9 @@
 package hw_12;
 
-public interface LoggerConfiguration {
+public interface LoggerConfiguration<T extends Number> {
     LoggingLevel getLogLevel();
 
-    long getMaxSize();
+    T getMaxSize();
 
     LogFormat getFormat();
 }

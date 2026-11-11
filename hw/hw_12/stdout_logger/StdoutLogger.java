@@ -30,11 +30,21 @@ public class StdoutLogger implements Logger {
 
     private void print(String messageLine, LoggingLevel level) {
         String timestamp = LocalDateTime.now().format(dateFormat);
-        System.out.printf("%s[%s][%s] Повідомлення: [%s]%s%n",
-                config.getFormat().getFormat(),
-                timestamp,
-                level,
-                messageLine,
-                StdoutFormat.RESET.getFormat());
+        int start = 0;
+        while (start < messageLine.length()) {
+            if (start > 0) {
+                System.out.println("---Continue previous message---");
+            }
+            String messageCount = start > 0 ? "(" + start / config.getMaxSize() + ")" : "";
+            int end = Math.min(messageLine.length(), start + config.getMaxSize());
+            System.out.printf("%s[%s][%s] Повідомлення%s: [%s]%s%n",
+                    config.getFormat().getFormat(),
+                    timestamp,
+                    level,
+                    messageCount,
+                    messageLine.substring(start, end),
+                    StdoutFormat.RESET.getFormat());
+            start = end;
+        }
     }
 }
